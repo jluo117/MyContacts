@@ -18,13 +18,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if Fail || (indexPath.row + 1).isMultiple(of: 3){
             let cell = tableView.dequeueReusableCell(withIdentifier: "Dog", for: indexPath)
+            offset += 1
             return cell
         }
         let cellIdentifier = "ContactCard"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactCard  else {
             fatalError("Error loading contact cards.")
         }
-        cell.ContactInfo.text = self.ToLoadContacts[indexPath.row].Name + ": " + self.ToLoadContacts[indexPath.row].Number
+        cell.ContactInfo.text = self.ToLoadContacts[indexPath.row - offset].Name + ": " + self.ToLoadContacts[indexPath.row - offset].Number
         return cell
     }
     
@@ -32,7 +33,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int ) -> Int{
-        return ToLoadContacts.count
+        return ToLoadContacts.count + (ToLoadContacts.count / 3)
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Contacts Below"
@@ -42,6 +43,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         if searchText == ""{
             searching = false
             ToLoadContacts = allContact
+            offset = 0
             self.tableView.reloadData()
             return
         }
@@ -55,6 +57,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             ToLoadContacts = self.myContacts[searchBar.text!]!
             searching = true
         }
+        offset = 0
         self.tableView.reloadData()
     }
     //Press Search to end editing
@@ -67,7 +70,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var Fail = false
     var searching = false
     var allContact = [Contact]()
-    
+    var offset = 0 //to handle offset created by the every 3
     override func viewDidLoad() {
         DogImage.isHidden = true
         getContacts()
