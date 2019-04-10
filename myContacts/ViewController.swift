@@ -14,7 +14,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var UISearch: UISearchBar!
     
-    //var currentlySearching = ""
+    //Table cell function calls
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if Fail || (indexPath.row + 1).isMultiple(of: 3){
             let cell = tableView.dequeueReusableCell(withIdentifier: "Dog", for: indexPath)
@@ -37,6 +37,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Contacts Below"
     }
+    //Search function calls
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == ""{
             searching = false
@@ -56,6 +57,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         }
         self.tableView.reloadData()
     }
+    //Press Search to end editing
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
@@ -77,10 +79,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
         super.viewDidLoad()
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
    
 

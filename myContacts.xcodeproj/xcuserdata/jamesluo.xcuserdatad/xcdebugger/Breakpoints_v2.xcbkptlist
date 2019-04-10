@@ -10,23 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.3528"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.353289"
+            timestampString = "576622301.225486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -42,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.353603"
+            timestampString = "576622301.225984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -58,13 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.353922"
+            timestampString = "576622301.226436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            endingLineNumber = "131">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,29 +56,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.354189"
+            timestampString = "576622301.226862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            endingLineNumber = "132">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.354443"
+            timestampString = "576622301.227237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            landmarkName = "getContacts()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,7 +86,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myContacts/ViewController.swift"
-            timestampString = "576622102.354684"
+            timestampString = "576622301.22761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
