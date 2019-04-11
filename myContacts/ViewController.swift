@@ -18,14 +18,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if Fail || (indexPath.row + 1).isMultiple(of: 3){
             let cell = tableView.dequeueReusableCell(withIdentifier: "Dog", for: indexPath)
-            offset += 1
+            
             return cell
         }
         let cellIdentifier = "ContactCard"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactCard  else {
             fatalError("Error loading contact cards.")
         }
-        cell.ContactInfo.text = self.ToLoadContacts[indexPath.row - offset].Name + ": " + self.ToLoadContacts[indexPath.row - offset].Number
+        cell.ContactInfo.text = self.ToLoadContacts[indexPath.row].Name + ": " + self.ToLoadContacts[indexPath.row].Number
         return cell
     }
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int ) -> Int{
-        return ToLoadContacts.count + (ToLoadContacts.count / 3)
+        return ToLoadContacts.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Contacts Below"
@@ -44,6 +44,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             searching = false
             ToLoadContacts = allContact
             offset = 0
+            parseLoadData()
             self.tableView.reloadData()
             return
         }
@@ -58,6 +59,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             searching = true
         }
         offset = 0
+        parseLoadData()
         self.tableView.reloadData()
     }
     //Press Search to end editing
@@ -74,6 +76,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         DogImage.isHidden = true
         getContacts()
+        parseLoadData()
         if Fail{
             tableView.isHidden = true
             DogImage.isHidden = false
@@ -100,9 +103,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 contacts.append(contact)
                 for phoneNumber in contact.phoneNumbers {
                     
-                    if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
-                        _ = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
-                        if contact.givenName == ""{
+                    let number = phoneNumber.value
+                   
+                    
+                        if contact.givenName == "" || number.stringValue == ""{
                             continue
                         }
                         
@@ -114,10 +118,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                         }
                         self.ToLoadContacts.append(Contact(name: contact.givenName, lastName: contact.familyName, number: number.stringValue))
 //                        print("\(contact.givenName) \(number.stringValue)")
-                    }
-                    else{
-//                        print("no number")
-                    }
+                    
+                    
                 }
             }
             
@@ -129,5 +131,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     
-    
+    func parseLoadData(){
+        var newContactList = [Contact]()
+        for contact in self.ToLoadContacts{
+            newContactList.append(contact)
+            if (newContactList.count + 1).isMultiple(of: 3){
+                newContactList.append(contact)
+            }
+        }
+        self.ToLoadContacts = newContactList
+    }
 }
